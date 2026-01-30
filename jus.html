@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jemima - Jus Naturels 100% Bio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset et Base */
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary: #f39c12;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #34495e;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-dark);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/aceuil2.jpeg') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+
+        nav.scrolled .logo,
+        nav.scrolled .nav-links a {
+            color: var(--dark);
+        }
+
+        nav.scrolled .burger div {
+            background-color: var(--dark);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 40px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Burger Menu */
+        .burger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            width: 100%;
+            max-width: 600px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* About Jemima */
+        .jemima-photo {
+            position: absolute;
+            right: 10%;
+            bottom: 0;
+            width: 400px;
+            animation: fadeInRight 1s ease;
+        }
+
+        .jemima-photo img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+            box-shadow: var(--shadow);
+        }
+
+        /* Section Jus */
+        .juices-section {
+            background-color: var(--white);
+        }
+
+        .juices-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .juice-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease;
+            animation-fill-mode: both;
+        }
+
+        .juice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .juice-img {
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .juice-img img {
+            max-width: 80%;
+            max-height: 80%;
+            transition: all 0.5s ease;
+        }
+
+        .juice-card:hover .juice-img img {
+            transform: scale(1.1);
+        }
+
+        .juice-info {
+            padding: 25px;
+        }
+
+        .juice-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .juice-info p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .price-table {
+            margin: 20px 0;
+        }
+
+        .price-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table th, .price-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .price-table th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .currency {
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        /* Section Bienfaits */
+        .benefits-section {
+            background-color: #f8f9fa;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .benefit-card p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .benefits-table {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow-x: auto;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .benefits-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .benefits-table th, .benefits-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .benefits-table th {
+            background-color: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .benefits-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .benefits-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Section Process */
+        .process-section {
+            background-color:transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/la\ gamme\ .jpeg') no-repeat center center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .process-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: var(--white);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--white);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--whatsapp-dark);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            margin-top: 3px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #4CA1AF 100%);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-section.about p {
+            margin-bottom: 25px;
+        }
+
+        .socials {
+            margin-top: 20px;
+        }
+
+        .socials a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .socials a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .links ul {
+            list-style: none;
+        }
+
+        .links li {
+            margin-bottom: 10px;
+        }
+
+        .links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .newsletter form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes navLinkFade {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 1024px) {
+            .jemima-photo {
+                width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .jemima-photo {
+                display: none;
+            }
+            
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 70%;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.5s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                color: var(--dark);
+                font-size: 1.2rem;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .burger.active .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .burger.active .line2 {
+                opacity: 0;
+            }
+            
+            .burger.active .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .juices-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/237690598084?text=Bonjour%20Jem'S%20!%20Je%20suis%20intéressé(e)%20par%20vos%20jus%20naturels.%20Pouvez-vous%20me%20renseigner%20?" 
+       class="whatsapp-float" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="hero">
+        <nav>
+            <div class="nav-container container">
+                <a href="#" class="logo">Jem<span class="text-primary">'S</span></a>
+                <ul class="nav-links">
+                    <li><a href="#jus">Nos Jus</a></li>
+                    <li><a href="#benefits">Bienfaits</a></li>
+                    <li><a href="#process">Notre Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1>La Santé dans le Verre by JEM'S</h1>
+                <p>Découvrez nos jus 100% naturels pressés à froid, élaborés avec amour par Jemima pour votre santé et bien-être.</p>
+                <a href="#jus" class="btn">Découvrir nos saveurs</a>
+            </div>
+        </div>
+        
+        <div class="jemima-photo">
+            <img src="images/jemima.jpeg" alt="Jemima préparant des jus naturels">
+        </div>
+    </header>
+
+    <!-- Section Jus -->
+    <section id="jus" class="juices-section">
+        <div class="container">
+            <h2 class="section-title">Nos <span class="text-primary">Délicieux</span> Jus</h2>
+            <div class="juices-container">
+                <!-- Jus 1 -->
+                <div class="juice-card" style="animation-delay: 0.1s;">
+                    <div class="juice-img" style="background-color: #8BC34A;">
+                        <img src="images/jus1.jpeg" alt="Jus Détox">
+                    </div>
+                    <div class="juice-info">
+                        <h3>Détox</h3>
+                        <p>Pomme, Céleri, Gingembre, Citron - Une combinaison purifiante pour éliminer les toxines</p>
+                        <div class="price-table">
+                            <table>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>1L</th>
+                                    <th>1,5L</th>
+                                </tr>
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>2000 FCFA</td>
+                                    <td>2500 FCFA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-whatsapp" style="width: 100%;" onclick="orderWhatsApp('Détox')">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Jus 2 -->
+                <div class="juice-card" style="animation-delay: 0.3s;">
+                    <div class="juice-img" style="background-color: #501026;">
+                        <img src="images/jus2.jpeg" alt="Jus Vitalité">
+                    </div>
+                    <div class="juice-info">
+                        <h3>Vitalité</h3>
+                        <p>Orange, Carotte, Curcuma - Un boost énergétique riche en vitamine C</p>
+                        <div class="price-table">
+                            <table>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>1L</th>
+                                    <th>1,5L</th>
+                                </tr>
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>2000 FCFA</td>
+                                    <td>2500 FCFA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-whatsapp" style="width: 100%;" onclick="orderWhatsApp('Vitalité')">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Jus 3 -->
+                <div class="juice-card" style="animation-delay: 0.5s;">
+                    <div class="juice-img" style="background-color: #e4851a;">
+                        <img src="images/jus3.jpeg" alt="Jus Berry">
+                    </div>
+                    <div class="juice-info">
+                        <h3>Berry Boost</h3>
+                        <p>Framboise, Myrtille, Grenade - Un concentré d'antioxydants pour une peau rayonnante</p>
+                        <div class="price-table">
+                            <table>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>1L</th>
+                                    <th>1,5L</th>
+                                </tr>
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>1500 FCFA</td>
+                                    <td>2000 FCFA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-whatsapp" style="width: 100%;" onclick="orderWhatsApp('Berry Boost')">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jus 4 -->
+                <div class="juice-card" style="animation-delay: 0.1s;">
+                    <div class="juice-img" style="background-color: #FF9800;">
+                        <img src="images/jus4.jpeg" alt="Jus Tropical">
+                    </div>
+                    <div class="juice-info">
+                        <h3>Tropical</h3>
+                        <p>Ananas, Mangue, Orange - Un mélange exotique riche en vitamines</p>
+                        <div class="price-table">
+                            <table>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>1L</th>
+                                    <th>1,5L</th>
+                                </tr>
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>1500 FCFA</td>
+                                    <td>2000 FCFA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-whatsapp" style="width: 100%;" onclick="orderWhatsApp('Tropical')">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Jus 5 -->
+                <div class="juice-card" style="animation-delay: 0.3s;">
+                    <div class="juice-img" style="background-color: #f8d50c;">
+                        <img src="images/jus5.jpeg" alt="Jus Citrus">
+                    </div>
+                    <div class="juice-info">
+                        <h3>Citrus</h3>
+                        <p>Pamplemousse, Citron, Orange - Rafraîchissant et riche en vitamine C</p>
+                        <div class="price-table">
+                            <table>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>1L</th>
+                                    <th>1,5L</th>
+                                </tr>
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>700 FCFA</td>
+                                    <td>1000 FCFA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-whatsapp" style="width: 100%;" onclick="orderWhatsApp('Citrus')">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Jus 6 -->
+                <div class="juice-card" style="animation-delay: 0.5s;">
+                    <div class="juice-img" style="background-color: #E91E63;">
+                        <img src="images/jus6.jpeg" alt="Jus Rouge">
+                    </div>
+                    <div class="juice-info">
+                        <h3>Rouge Passion</h3>
+                        <p>Betterave, Pomme, Gingembre - Énergisant et excellent pour la circulation</p>
+                        <div class="price-table">
+                            <table>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>1L</th>
+                                    <th>1,5L</th>
+                                </tr>
+                                <tr>
+                                    <td>Prix</td>
+                                    <td>1500 FCFA</td>
+                                    <td>2000 FCFA</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button class="btn btn-whatsapp" style="width: 100%;" onclick="orderWhatsApp('Rouge Passion')">
+                            <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>  
+
+    <!-- Section Bienfaits -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Les <span class="text-primary">Bienfaits</span> de Nos Jus</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Santé Cardiaque</h3>
+                    <p>Nos jus riches en antioxydants aident à maintenir un cœur en bonne santé et à réduire le cholestérol.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Clarté Mentale</h3>
+                    <p>Les nutriments essentiels améliorent la concentration, la mémoire et les fonctions cognitives.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Énergie Naturelle</h3>
+                    <p>Une alternative saine aux boissons énergisantes industrielles, sans crash ni effets secondaires.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Immunité Renforcée</h3>
+                    <p>Vitamines C, D et zinc pour soutenir votre système immunitaire toute l'année.</p>
+                </div>
+            </div>
+            
+            <div class="benefits-table">
+                <table>
+                    <tr>
+                        <th>Jus</th>
+                        <th>Vitamines</th>
+                        <th>Bienfaits Principaux</th>
+                        <th>Ingrédients Clés</th>
+                    </tr>
+                    <tr>
+                        <td>Détox</td>
+                        <td>A, C, K</td>
+                        <td>Purification, Énergie</td>
+                        <td>Céleri, Gingembre</td>
+                    </tr>
+                    <tr>
+                        <td>Vitalité</td>
+                        <td>B, C, E</td>
+                        <td>Système immunitaire</td>
+                        <td>Carotte, Curcuma</td>
+                    </tr>
+                    <tr>
+                        <td>Berry Boost</td>
+                        <td>C, K, E</td>
+                        <td>Antioxydants, Peau</td>
+                        <td>Myrtille, Grenade</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Process -->
+    <section id="process" class="process-section">
+        <div class="process-container container">
+            <h2 class="section-title">Notre <span class="text-primary">Processus</span> de Fabrication</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1. Sélection Rigoureuse</h3>
+                        <p>Nous sélectionnons uniquement des fruits et légumes bio de saison, cultivés localement dans nos fermes partenaires.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2. Extraction à Froid</h3>
+                        <p>Pressage lent à moins de 45°C pour préserver tous les nutriments, enzymes et saveurs naturelles.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>3. Conditionnement</h3>
+                        <p>Mise en bouteille sous 24h dans des contenants en verre écologiques et recyclables.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>4. Livraison</h3>
+                        <p>Expédition eco-responsable dans des emballages isothermes pour préserver la fraîcheur et les qualités nutritionnelles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>À Propos de Jem'S</h3>
+                    <p>Depuis 2020, Jem'S crée des jus naturels pour vous apporter santé et vitalité au quotidien. Notre mission est de rendre la nutrition saine accessible et délicieuse.</p>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/237690598084" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#jus">Nos Jus</a></li>
+                        <li><a href="#benefits">Bienfaits</a></li>
+                        <li><a href="#process">Notre Process</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://wa.me/237690598084" target="_blank">Commander</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contactez-nous</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rue Alpha, Yaoundé Manguier</p>
+                    <p><i class="fas fa-phone"></i> +237 690598084</p>
+                    <p><i class="fas fa-envelope"></i> jemimatalla@gmail.com</p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/237690598084" style="color: #ddd; text-decoration: none;" target="_blank">WhatsApp: 690598084</a></p>
+                </div>
+                <div class="footer-section newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Abonnez-vous pour recevoir nos offres spéciales et conseils bien-être</p>
+                    <form>
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Jem'S Jus Naturels. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links li');
+        
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            navLinks.classList.toggle('active');
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
+            
+            // Animate Links
+            navLinksItems.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+        });
+        
+        // Sticky Nav on Scroll
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Smooth Scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        burger.classList.remove('toggle');
+                        navLinksItems.forEach(link => {
+                            link.style.animation = '';
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Function to open WhatsApp with order message
+        function orderWhatsApp(juiceName) {
+            const phoneNumber = '237690598084';
+            const message = `Bonjour Jem'S ! Je souhaite commander le jus ${juiceName}. Pouvez-vous me renseigner sur la disponibilité et les modalités de livraison ?`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        // Animation on Scroll
+        function checkScroll() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                
+                if (itemTop < windowHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate hero content
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+                heroContent.style.transition = 'all 1s ease';
+            }, 300);
+            
+            // Set up scroll event listener
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Check on load in case items are already visible
+        });
+        
+        // Juice cards animation
+        const juiceCards = document.querySelectorAll('.juice-card');
+        
+        juiceCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.style.transition = `all 0.8s ease ${index * 0.2}s`;
+            }, 500);
+        });
+    </script>
+</body>
+</html>
